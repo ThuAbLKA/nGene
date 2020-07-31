@@ -7,8 +7,11 @@ extern nGene::Application* nGene::CreateApp();
 
 	int main(int argc, char** argv)
 	{
-		printf("Starting nGene");
+		nGene::Log::Init("sandbox");
+		NGN_CORE_TRACE("nGene starting...");
+
 		auto app = nGene::CreateApp();
+		NGN_CLIENT_INFO("Sandbox starting...");
 		app->Run();
 		delete app;
 	}
