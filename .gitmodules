@@ -1,0 +1,3 @@
+[submodule "nGene/vendor/spdlog"]
+	path = nGene/vendor/spdlog
+	url = https://github.com/gabime/spdlog
