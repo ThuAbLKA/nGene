@@ -42,12 +42,18 @@
     <ClInclude Include="src\nGene\Events\ApplicationEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\ngpch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nGene\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\nGene\Log.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ngpch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

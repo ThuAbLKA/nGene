@@ -1,3 +1,4 @@
+#include "ngpch.h"
 #include "Log.h"
 
 namespace nGene 

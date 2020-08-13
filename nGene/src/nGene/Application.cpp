@@ -1,3 +1,4 @@
+#include "ngpch.h"
 #include "Application.h"
 
 namespace nGene {
