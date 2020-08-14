@@ -12,6 +12,8 @@
 #include <unordered_set>
 #include <sstream>
 
+#include "nGene/Log.h"
+
 #ifdef NGN_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

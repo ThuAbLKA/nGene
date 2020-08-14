@@ -72,4 +72,28 @@ namespace nGene {
 
 		EVENT_CLASS_TYPE(MouseButtonRelease)
 	};
+
+	class NGN_API MouseScrollEvent : public Event
+	{
+	public:
+		MouseScrollEvent(float xoffset, double yoffset) :
+			m_XOffset(xoffset), m_YOffset(yoffset) {}
+
+
+		inline float GetX() const { return m_XOffset; }
+		inline float GetY() const { return m_YOffset; }
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "MouseScrollEvent: " << m_XOffset << ", " << m_YOffset;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(MouseScroll)
+		EVENT_CLASS_CATEGORY(ECatMouse | ECatInput)
+
+	private:
+		float m_XOffset, m_YOffset;
+	};
 }

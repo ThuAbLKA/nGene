@@ -2,6 +2,7 @@
 
 #include "nGene/Window.h"
 #include <GLFW/glfw3.h>
+#include "nGene/Events/ApplicationEvent.h"
 
 namespace nGene {
 
