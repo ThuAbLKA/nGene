@@ -4,3 +4,4 @@
 bin/
 bin-int/
 /vendor/premake
+/gen.bat
