@@ -1,3 +1,6 @@
 [submodule "nGene/vendor/spdlog"]
 	path = nGene/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "nGene/vendor/GLFW"]
+	path = nGene/vendor/GLFW
+	url = https://github.com/TheCherno/glfw
