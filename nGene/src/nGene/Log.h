@@ -25,6 +25,7 @@ namespace nGene {
 #define NGN_CORE_WARN(...)     ::nGene::Log::GetCoreLogger()->warn(__VA_ARGS__)
 #define NGN_CORE_ERROR(...)    ::nGene::Log::GetCoreLogger()->error(__VA_ARGS__)
 #define NGN_CORE_CRITICAL(...) ::nGene::Log::GetCoreLogger()->critical(__VA_ARGS__)
+// #define NGN_CORE_ASSERT(...) ::nGene::Log::GetCoreLogger()->(__VA_ARGS__)
 
 // client log macors
 #define NGN_CLIENT_TRACE(...)    ::nGene::Log::GetClientLogger()->trace(__VA_ARGS__)

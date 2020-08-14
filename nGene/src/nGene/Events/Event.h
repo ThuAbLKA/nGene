@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Core.h"
-#include "../../ngpch.h";
+#include "ngpch.h";
 
 namespace nGene {
 

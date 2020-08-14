@@ -10,6 +10,11 @@ workspace "nGene"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "nGene/vendor/GLFW/include"
+
+include "nGene/vendor/GLFW"
+
 project "nGene"
 	location "nGene"
 	kind "SharedLib"
@@ -17,6 +22,9 @@ project "nGene"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	pchheader "ngpch.h"
+	pchsource "nGene/src/ngpch.cpp"
 
 	files
 	{
@@ -26,7 +34,15 @@ project "nGene"
 
 	includedirs
 	{
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/src",
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
