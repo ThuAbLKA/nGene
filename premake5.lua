@@ -12,8 +12,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "nGene/vendor/GLFW/include"
+IncludeDir["Glad"] = "nGene/vendor/Glad/include"
+IncludeDir["ImGui"] = "nGene/vendor/imgui"
 
 include "nGene/vendor/GLFW"
+include "nGene/vendor/Glad"
+include "nGene/vendor/imgui"
 
 project "nGene"
 	location "nGene"
@@ -36,12 +40,16 @@ project "nGene"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links
 	{
+		"Glad",
 		"GLFW",
+		"ImGui",
 		"opengl32.lib"
 	}
 
@@ -53,7 +61,8 @@ project "nGene"
 		defines
 		{
 			"NGN_PLATFORM_WINDOWS",
-			"NGN_BUILD_DLL"
+			"NGN_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
@@ -63,14 +72,17 @@ project "nGene"
 
 	filter "configurations:Debug"
 		defines "NGN_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "NGN_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "NGN_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Sandbox"
@@ -110,12 +122,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "NGN_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "NGN_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "NGN_DIST"
+		buildoptions "/MD"
 		optimize "On"

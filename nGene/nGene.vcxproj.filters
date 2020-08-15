@@ -4,6 +4,9 @@
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform\Windows">
       <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
     </Filter>
@@ -13,8 +16,14 @@
     <Filter Include="nGene\Events">
       <UniqueIdentifier>{56A2FD04-4205-8DA9-EB8A-C55FD7CC582C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="nGene\ImGui">
+      <UniqueIdentifier>{5C6552A3-C81A-CB98-510F-C56FBDC3C19C}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WinWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
@@ -40,6 +49,15 @@
     <ClInclude Include="src\nGene\Events\MouseEvent.h">
       <Filter>nGene\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\nGene\ImGui\ImGuiLayer.h">
+      <Filter>nGene\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\nGene\Layer.h">
+      <Filter>nGene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\nGene\LayerStack.h">
+      <Filter>nGene</Filter>
+    </ClInclude>
     <ClInclude Include="src\nGene\Log.h">
       <Filter>nGene</Filter>
     </ClInclude>
@@ -49,10 +67,22 @@
     <ClInclude Include="src\ngpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WinWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\nGene\Application.cpp">
+      <Filter>nGene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nGene\ImGui\ImGuiLayer.cpp">
+      <Filter>nGene\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nGene\Layer.cpp">
+      <Filter>nGene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nGene\LayerStack.cpp">
       <Filter>nGene</Filter>
     </ClCompile>
     <ClCompile Include="src\nGene\Log.cpp">

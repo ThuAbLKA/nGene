@@ -1,9 +1,14 @@
 #include "ngpch.h"
 #include "WinWindow.h"
+
 #include <nGene\Events\KeyEvent.h>
 #include <nGene\Events\MouseEvent.h>
 
+#include <glad\glad.h>
+
 namespace nGene {
+#define GLFW_USER_PTR(x) *(WindowData*)glfwGetWindowUserPointer(x)
+
 	static bool s_GLFWInit = false;
 
 	static void GLFWErrorCallback(int error, const char* desc) 
@@ -44,13 +49,21 @@ namespace nGene {
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+
+		// initialize glad
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		NGN_CORE_ASSERT(status, "GLAD init Failed!");
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
+
+		// GLFW windowPosition callback
+		//glfwSetWindowPosCallback()
 
 		// GLFW WindowSize callback
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height) 
 		{
-			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			WindowData& data = GLFW_USER_PTR(window);
 			data.Width = width;
 			data.Height = height;
 			WindowResizeEvent event(width, height);
@@ -59,14 +72,14 @@ namespace nGene {
 
 		// GLFW WindowClose callback
 		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window) {
-			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			WindowData& data = GLFW_USER_PTR(window);
 			WindowCloseEvent event;
 			data.EventCallback(event);
 		});
 
 		// GLFW Key callback
 		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods) {
-			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			WindowData& data = GLFW_USER_PTR(window);
 			
 			switch (action)
 			{
@@ -91,9 +104,15 @@ namespace nGene {
 			}
 		});
 
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode) {
+			WindowData& data = GLFW_USER_PTR(window);
+			KeyTypeEvent event(keycode);
+			data.EventCallback(event);
+		});
+
 		// GLFW mouse callback
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods) {
-			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			WindowData& data = GLFW_USER_PTR(window);
 
 			switch (action)
 			{
@@ -114,14 +133,14 @@ namespace nGene {
 
 		// GLFW MousePosition callback
 		glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double xpos, double ypos) {
-			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			WindowData& data = GLFW_USER_PTR(window);
 			MouseMoveEvent event(xpos, ypos);
 			data.EventCallback(event);
 		});
 
 		// GLFW MouseScroll callback
 		glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double xoffset, double yoffset) {
-			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			WindowData& data = GLFW_USER_PTR(window);
 			MouseScrollEvent event(xoffset, yoffset);
 			data.EventCallback(event);
 		});

@@ -4,6 +4,7 @@
 #include <GLFW/glfw3.h>
 #include "nGene/Events/ApplicationEvent.h"
 
+
 namespace nGene {
 
 	class WinWindow: public Window

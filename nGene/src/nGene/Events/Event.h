@@ -19,6 +19,7 @@ namespace nGene {
 		AppRender,
 		KeyPress,
 		KeyRelease,
+		KeyType,
 		MouseButtonPress,
 		MouseButtonRelease,
 		MouseMove,
@@ -46,6 +47,9 @@ namespace nGene {
 	{
 		friend class EventDispatcher;
 
+	protected:
+		bool m_Handled = false;
+
 	public:
 		virtual EventType GetEventType() const = 0;
 		virtual const char* GetName() const = 0;
@@ -57,8 +61,8 @@ namespace nGene {
 			return GetEventCategoryFlags() & category;
 		}
 
-	protected:
-		bool m_Handled = false;
+		inline bool IsHandled() const { return m_Handled; }
+
 	};
 
 	class EventDispatcher
