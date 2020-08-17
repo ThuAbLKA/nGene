@@ -11,6 +11,10 @@
 	#error nGene only supports windows
 #endif
 
+#ifdef NGN_DEBUG
+	#define NGN_ENABLE_ASSERTS
+#endif
+
 #ifdef NGN_ENABLE_ASSERTS
     #define NGN_CORE_ASSERT(x, ...) { if(!(x)) { NGN_CORE_ERROR("Assertion failed: {0}", __VA_ARGS__); DebugBreak(); } }
 #else
