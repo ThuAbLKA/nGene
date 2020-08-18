@@ -149,6 +149,9 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\nGene\MouseButtonCodes.h" />
+    <ClInclude Include="src\nGene\Input.h" />
+    <ClInclude Include="src\nGene\KeyCodes.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WinWindow.h" />
     <ClInclude Include="src\nGene.h" />
@@ -165,6 +168,7 @@
     <ClInclude Include="src\nGene\Log.h" />
     <ClInclude Include="src\nGene\Window.h" />
     <ClInclude Include="src\ngpch.h" />
+    <ClInclude Include="src\Platform\Windows\WinInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
@@ -177,6 +181,7 @@
     <ClCompile Include="src\ngpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WinInput.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\Glad\Glad.vcxproj">

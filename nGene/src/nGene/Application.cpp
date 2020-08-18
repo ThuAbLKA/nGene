@@ -1,5 +1,6 @@
 #include "ngpch.h"
 #include "Application.h"
+#include "nGene/./Input.h"
 
 #include <glad/glad.h>
 
@@ -59,6 +60,12 @@ namespace nGene {
 			// update all layers
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
+
+			auto [x, y] = Input::GetMousePos();
+			NGN_CORE_TRACE("Mouse Pos: {0}, {1}", x, y);
+
+			auto pressed = Input::IsMouseButtonPressed(1);
+			NGN_CORE_TRACE("Mouse 1 pressed: {0}", pressed);
 
 			m_Window->OnUpdate();
 		}

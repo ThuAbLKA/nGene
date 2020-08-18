@@ -10,7 +10,8 @@ public:
 
 	void OnUpdate() override
 	{
-		NGN_CLIENT_INFO("TestLayer::UPDATE");
+		if (nGene::Input::IsKeyPressed(NGN_KEY_TAB))
+			NGN_CORE_TRACE("TAB is pressed");
 	}
 
 	void OnEvent(nGene::Event& event) override
