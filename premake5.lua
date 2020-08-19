@@ -16,6 +16,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "nGene/vendor/GLFW/include"
 IncludeDir["Glad"] = "nGene/vendor/Glad/include"
 IncludeDir["ImGui"] = "nGene/vendor/imgui"
+IncludeDir["glm"] = "nGene/vendor/glm"
 
 include "nGene/vendor/GLFW"
 include "nGene/vendor/Glad"
@@ -44,6 +45,8 @@ project "nGene"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
 
 	includedirs
@@ -52,7 +55,8 @@ project "nGene"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -106,16 +110,17 @@ project "Sandbox"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs 
 	{
 		"nGene/vendor/spdlog/include",
-		"nGene/src"
+		"nGene/src",
+		"%{IncludeDir.glm}"
 	}
 
-	links 
+	links
 	{
 		"nGene"
 	}

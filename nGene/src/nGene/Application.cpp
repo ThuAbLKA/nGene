@@ -4,6 +4,7 @@
 
 #include <glad/glad.h>
 
+
 namespace nGene {
 
 #define BIND_EVT_FN(x) std::bind(&x, this, std::placeholders::_1)
